@@ -1,0 +1,74 @@
+##### PREGUNTAS DE LA DIAPOSITIVA #####
+
+?- conectado(saskatoon, vancouver).
+false.
+
+?- conectado(vancouver, saskatoon).
+true.
+
+?- conexion(regina, Z, C).  % formato Z-C
+saskatoon-7
+winnipeg-4
+calgary-16
+winnipeg-27
+edmonton-20
+
+?- camino(regina, Z, C, Ruta).  % formato Z-C-Ruta
+saskatoon-7-[regina,saskatoon]
+winnipeg-4-[regina,winnipeg]
+calgary-16-[regina,saskatoon,calgary]
+winnipeg-27-[regina,saskatoon,winnipeg]
+edmonton-20-[regina,saskatoon,calgary,edmonton]
+
+?- costo minimo de regina a cada destino
+calgary: 16
+edmonton: 20
+saskatoon: 7
+winnipeg: 4
+
+##### REGLAS NUEVAS #####
+
+?- tiene_aristas(vancouver).
+true.
+
+?- tiene_aristas(winnipeg).
+true.
+
+?- tiene_aristas(toronto).
+false.
+
+?- setof(N, tiene_aristas(N), L).
+[calgary,edmonton,regina,saskatoon,vancouver,winnipeg]
+
+?- costo_por(vancouver, saskatoon, winnipeg, C).  % formato C
+48
+55
+49
+54
+
+?- costo_por(vancouver, calgary, regina, C).  % formato C
+51
+27
+
+?- costo_por(vancouver, regina, edmonton, C).  % formato C
+false.
+
+?- costo_por(edmonton, Y, winnipeg, C).  % formato Y-C
+saskatoon-32
+saskatoon-39
+calgary-39
+regina-39
+
+##### PREGUNTA MAS INTERESANTE #####
+
+?- conectado(edmonton, calgary).
+true.
+
+?- camino(edmonton, calgary, C, Ruta).  % formato C-Ruta
+21-[edmonton,saskatoon,calgary]
+
+?- conectado(calgary, edmonton).
+true.
+
+?- camino(calgary, edmonton, C, Ruta).  % formato C-Ruta
+4-[calgary,edmonton]
